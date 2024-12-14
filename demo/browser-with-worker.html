@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Get ImageData Demo</title>
+    <title>Get ImageData Demo Worker Edition</title>
 </head>
 <body>
 <input type="file" accept="image/*">
 <div><span id="width"></span>x<span id="height"></span></div>
 <div id="length"></div>
 <script type="module">
-    import {getImageDataWithCanvas} from "./get-image-data.js";
+    import {getImageDataWithCanvasByWorker} from "./get-image-data.js";
 
     (async function fetchImage() {
         const response = await fetch("./test.png");
         const blob = await response.blob();
-        imageDataHandler(await getImageDataWithCanvas(blob));
+        imageDataHandler(await getImageDataWithCanvasByWorker(blob));
     })();
 
     function imageDataHandler(imageData) {
@@ -31,7 +31,7 @@
         try {
             console.time("getImageData");
             // for (let i = 0; i < 10; i++) {
-            imageDataHandler(await getImageDataWithCanvas(file));
+            imageDataHandler(await getImageDataWithCanvasByWorker(file));
             // }
         } finally {
             console.timeEnd("getImageData");
