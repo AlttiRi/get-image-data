@@ -1,0 +1,45 @@
+{
+  "name": "@alttiri/get-image-data",
+  "version": "0.0.1-20241214",
+  "description": "A library to get ImageData on Node.js and browsers",
+  "homepage": "https://github.com/AlttiRi/get-image-data",
+  "keywords": [
+    "image-data"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "files": [
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "index.js",
+    "index.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alttiri/get-image-data.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "compile-ts":       "tsc --build",
+    "compile-ts-watch": "tsc --build --watch",
+    "clean-ts":         "tsc --build --clean",
+    "#": "",
+    "test-publish": "tsc --build && npm pack",
+    "publish-npm":  "tsc --build && npm publish --registry=https://registry.npmjs.org",
+    "publish-ghp":  "tsc --build && npm publish --registry=https://npm.pkg.github.com",
+    "##": "",
+    "unpublish-npm": "npm unpublish @alttiri/get-image-data@0.0.1-20241214 --registry=https://registry.npmjs.org",
+    "###": "",
+    "login-npm": "npm login --registry=https://registry.npmjs.org",
+    "login-ghp": "npm login --registry=https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "sharp": "0.33.5",
+    "typescript": "5.5.4",
+    "@types/node": "20.12.12"
+  }
+}

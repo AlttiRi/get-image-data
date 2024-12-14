@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get ImageData Demo</title>
+</head>
+<body>
+<input type="file" accept="image/*">
+<div><span id="width"></span>x<span id="height"></span></div>
+<div id="length"></div>
+<script>
+    (async function fetchImage() {
+        const response = await fetch("./test.png");
+        const blob = await response.blob();
+        cb(await getImageDataWithCanvas(blob));
+    })();
+
+    function cb(imageData) {
+        console.log(imageData);
+        document.querySelector("#width").textContent  = imageData.width;
+        document.querySelector("#height").textContent = imageData.height;
+        document.querySelector("#length").textContent = imageData.data.length;
+    }
+
+    /** @type {HTMLInputElement} */
+    const input = document.querySelector(`input[type="file"]`);
+    input.onchange = async function() {
+        const file = input.files[0];
+        try {
+            console.time("getImageData");
+            // for (let i = 0; i < 10; i++) {
+            cb(await getImageDataWithCanvas(file));
+            // }
+        } finally {
+            console.timeEnd("getImageData");
+        }
+    }
+
+    function getImageDataWithCanvas(file) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+                URL.revokeObjectURL(img.src);
+                const canvas = new OffscreenCanvas(img.width, img.height);
+                const context = canvas.getContext("2d");
+                if (!context) {
+                    reject(new Error("OffscreenCanvas context is null"));
+                    return;
+                }
+                context.drawImage(img, 0, 0);
+                resolve(context.getImageData(0, 0, canvas.width, canvas.height));
+            };
+            img.onerror = () => {
+                URL.revokeObjectURL(img.src);
+                reject(new Error("Failed to load image"));
+            };
+        });
+    }
+</script>
+</body>
+</html>
