@@ -1,10 +1,13 @@
 {
   "name": "@alttiri/get-image-data",
-  "version": "0.0.1-20241214",
-  "description": "A library to get ImageData on Node.js and browsers",
+  "version": "0.0.2-20241214",
+  "description": "A simple library to get ImageData on Node.js and browsers",
   "homepage": "https://github.com/AlttiRi/get-image-data",
   "keywords": [
-    "image-data"
+    "image-data",
+    "pixels",
+    "get-image-data",
+    "get-pixels"
   ],
   "license": "MIT",
   "type": "module",
