@@ -9,12 +9,12 @@
 <div><span id="width"></span>x<span id="height"></span></div>
 <div id="length"></div>
 <script type="module">
-    import {getImageDataWithCanvas} from "./get-image-data.js";
+    import {getImageDataWithCanvas as getImageData} from "./get-image-data.js";
 
     (async function fetchImage() {
         const response = await fetch("./test.png");
         const blob = await response.blob();
-        imageDataHandler(await getImageDataWithCanvas(blob));
+        imageDataHandler(await getImageData(blob));
     })();
 
     function imageDataHandler(imageData) {
@@ -31,7 +31,7 @@
         try {
             console.time("getImageData");
             // for (let i = 0; i < 10; i++) {
-            imageDataHandler(await getImageDataWithCanvas(file));
+            imageDataHandler(await getImageData(file));
             // }
         } finally {
             console.timeEnd("getImageData");

@@ -1,6 +1,6 @@
-import {getImageDataWithSharp} from "@/get-with-sharp.ts";
+import {getImageDataWithSharp as getImageData} from "@/get-with-sharp.ts";
 
-const imageData = await getImageDataWithSharp("./test.png");
+const imageData = await getImageData("./test.png");
 
 // ---
 
