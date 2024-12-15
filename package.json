@@ -1,6 +1,6 @@
 {
   "name": "@alttiri/get-image-data",
-  "version": "0.0.4-20241215",
+  "version": "0.0.5-20241215",
   "description": "A simple library to get ImageData on Node.js and browsers",
   "homepage": "https://github.com/AlttiRi/get-image-data",
   "keywords": [
