@@ -28,22 +28,24 @@ npm i @alttiri/get-image-data
 npm i @alttiri/get-image-data sharp
 ```
 
-An image path (`string`) as input:
+#### An image path (`string`) as input:
 ```ts
 import {getImageDataWithSharp as getImageData} from "@alttiri/get-image-data";
 
 const imagePath = "C:/Windows/IdentityCRL/WLive48x48.png";
-console.log(await getImageData(imagePath));
+const imageData = await getImageData(imagePath);
+console.log(imageData);
 ```
 
-Or `ArrayBufferLike | ArrayBufferView`:
+#### Or `ArrayBufferLike`/`ArrayBufferView`:
 ```ts
 import {getImageDataWithSharp as getImageData} from "@alttiri/get-image-data";
 import fs from "node:fs/promises";
 
 const imagePath = "C:/Windows/IdentityCRL/WLive48x48.png";
 const fileBuffer = await fs.readFile(imagePath);
-console.log(await getImageData(fileBuffer));
+const imageData = await getImageData(fileBuffer);
+console.log(imageData);
 ```
 
 The result:
@@ -63,7 +65,7 @@ The result:
 npm i @alttiri/get-image-data
 ```
 
-`File` from `HTMLInputElement`:
+#### `File` from `HTMLInputElement`:
 
 ```js
 import {getImageDataWithCanvas as getImageData} from "@alttiri/get-image-data";
@@ -71,11 +73,12 @@ import {getImageDataWithCanvas as getImageData} from "@alttiri/get-image-data";
 const input = document.querySelector(`input[type="file"]`);
 input.onchange = async function() {
   const file = input.files[0];
-  console.log(await getImageData(file));
+  const imageData = await getImageData(file);
+  console.log(imageData);
 }
 ```
 
-`Blob` from `fetch` response:
+#### `Blob` from `fetch` response:
 
 ```ts
 import {getImageDataWithCanvas as getImageData} from "@alttiri/get-image-data";
@@ -83,5 +86,6 @@ import {getImageDataWithCanvas as getImageData} from "@alttiri/get-image-data";
 const imageUrl = "https://i.imgur.com/DR94LKg.jpeg";
 const resp = await fetch(imageUrl);
 const blob = await resp.blob();
-console.log(await getImageData(blob));
+const imageData = await getImageData(blob);
+console.log(imageData);
 ```
