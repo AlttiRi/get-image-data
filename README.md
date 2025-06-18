@@ -1,4 +1,4 @@
-# get-image-data
+# [get-image-data](https://github.com/AlttiRi/get-image-data)
 
 A simple JS library to get `ImageData`.
 
